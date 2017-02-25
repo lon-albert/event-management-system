@@ -16,11 +16,12 @@
         <tr>
           <th>Title</th>
           <th>Date</th>
-          <th>Duration(days)</th>
+          <th>Duration(hours)</th>
           <th>Location</th>
           <th>Description</th>
           <th>Visibility</th>
           <th>Author</th>
+          <th>Comments</th>
           <th class="actions" >Actions</th>
         </tr>
         </thead>
@@ -32,12 +33,14 @@
         <tbody *ngIf="!isEditing">
         <tr *ngFor="let event of events; let i = index">
           <td>{{event.title}}</td>
-          <td>{{event.startdatetime}}</td>
+          <td>{{event.startdatetime | date:'short'}}</td>
           <td>{{event.duration}}</td>
           <td>{{event.location}}</td>
           <td>{{event.description  | slice:0:20}}...</td>
           <td>{{event.visible}}</td>
           <td>{{event?.author?.fullname}}</td>
+          <td><a [routerLink]="['/admin/comments',event._id]" class="btn btn-xs btn-primary">
+            View</a></td>
           <td class="actions">
             <button class="btn btn-sm btn-warning" (click)="enableEditing(event)"><em class="fa fa-pencil"></em></button>
             <button class="btn btn-sm btn-danger" (click)="deleteEvent(event)"><em class="fa fa-trash"></em></button>
@@ -52,7 +55,7 @@
                 <input class="form-control" type="text" name="title" [(ngModel)]="event.title" placeholder="Title" required>
               </div>
               <div class="form-group">
-                <input class="form-control" type="text" name="startdatetime" [(ngModel)]="event.startdatetime" placeholder="Date" required>
+                <input class="form-control" type="datetime-local" name="startdatetime" [(ngModel)]="event.startdatetime" placeholder="Date" required>
               </div>
               <div class="form-group">
                 <input class="form-control" type="number" name="duration" [(ngModel)]="event.duration" placeholder="Duration (days)" min="1" step="1" required>
@@ -97,10 +100,10 @@
           <input class="form-control" type="text" name="title" formControlName="title" placeholder="Title">
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" name="startdatetime" formControlName="startdatetime" placeholder="Date" required>
+          <input class="form-control" type="datetime-local" name="startdatetime" formControlName="startdatetime" placeholder="Date" required>
         </div>
         <div class="form-group">
-          <input class="form-control" type="number" name="duration" formControlName="duration" placeholder="Duration" min="1" step="1" required>
+          <input class="form-control" type="number" name="duration" formControlName="duration" placeholder="Duration (hours)" min="1" step="1" required>
         </div>
         <div class="form-group">
           <input class="form-control" type="text" name="location" formControlName="location" placeholder="Location">

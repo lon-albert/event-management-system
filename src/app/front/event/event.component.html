@@ -18,7 +18,7 @@
 
     <div class="bottom">
       <p class="bg-primary" ><i class="fa fa-pencil fa-fw"></i>&nbsp; {{event?.author?.fullname}}</p>
-      <p class="bg-success"><i class="fa fa-clock-o fa-fw"></i>&nbsp; {{event.startdatetime}}</p>
+      <p class="bg-success"><i class="fa fa-clock-o fa-fw"></i>&nbsp; {{event.startdatetime | date:'short'}}</p>
       <p class="bg-primary"><i class="fa fa-map-marker fa-fw"></i>&nbsp; {{event.location}}</p>
       <p class="bg-success"><i class="fa fa-bell fa-fw"></i>&nbsp; {{event.duration}}</p>
     </div>

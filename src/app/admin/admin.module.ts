@@ -5,6 +5,7 @@ import {AdminRoutingModule} from './admin-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GlobalModule} from '../global/global.module';
 import {EventsComponent} from "./events/events.component";
+import {CommentsComponent} from "./comments/comments.component";
 
 @NgModule({
   imports: [
@@ -13,11 +14,11 @@ import {EventsComponent} from "./events/events.component";
     ReactiveFormsModule,
     GlobalModule,
     AdminRoutingModule,
-
   ],
   declarations: [
     AdminComponent,
-    EventsComponent
+    EventsComponent,
+    CommentsComponent
   ],
 })
 export class AdminModule {

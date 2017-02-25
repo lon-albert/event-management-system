@@ -55,4 +55,8 @@ export class DataService {
   getComments(event_id: any) {
     return this.http.get(`/api/comments/${event_id}`).map(res => res.json());
   }
+
+  deleteComment(comment: any) {
+    return this.http.delete(`/api/event/${comment._id}`, this.options);
+  }
 }

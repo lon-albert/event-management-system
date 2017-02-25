@@ -2,8 +2,6 @@
  * Created by lon on 12/25/16.
  */
 import { Injectable } from '@angular/core';
-import {isNull} from 'util';
-import {User} from "../interfaces/user.interface";
 
 @Injectable()
 export class UserService {
@@ -38,9 +36,7 @@ export class UserService {
 
     isUserAnAdmin() {
         if (this.isLoggedIn()) {
-            return isNull(
-                JSON.parse(localStorage.getItem('current_user')).role
-            ) ? false : (JSON.parse(localStorage.getItem('current_user')).is_admin);
+            return JSON.parse(localStorage.getItem('current_user')).is_admin
         }
         return false;
     }

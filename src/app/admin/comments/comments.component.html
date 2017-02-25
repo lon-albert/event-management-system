@@ -1,0 +1,46 @@
+<div class="card" *ngIf="isLoading">
+  <h4 class="card-header">Loading...</h4>
+  <div class="card-block text-xs-center">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+  </div>
+</div>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="container">
+  <div class="card" *ngIf="!isLoading">
+    <h4 class="card-header">All comments ({{comments.length}})</h4>
+    <div class="card-block">
+      <table class="table table-bordered table-hover table-responsive">
+        <thead class="thead-inverse">
+        <tr>
+          <th>Author</th>
+          <th>Date</th>
+          <th>Event</th>
+          <th>Content</th>
+          <th class="actions" >Actions</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="comments.length === 0">
+        <tr>
+          <td colspan="3">There are no comments in the DB</td>
+        </tr>
+        </tbody>
+        <tbody *ngIf="!isEditing">
+        <tr *ngFor="let comment of comments; let i = index">
+          <td>{{comment?.author?.fullname}}</td>
+          <td>{{comment.date | date:'short'}}</td>
+          <td>{{comment.event.title}}</td>
+          <td>{{comment.content}}</td>
+          <td class="actions">
+            <button class="btn btn-sm btn-danger" (click)="deleteComment(comment)"><em class="fa fa-trash"></em></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+

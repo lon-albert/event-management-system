@@ -13,16 +13,17 @@
       <small class="text-muted">Upcoming</small>
     </h3>
     <div class="row">
+      <p class="lead text-xs-center" *ngIf="upcoming === 0">There are no previous events</p>
       <div class="col-xs-3" *ngFor="let event of events">
-        <div class="card">
+        <div class="card" *ngIf="event.startdatetime > now && event.visible === true">
           <div class="card-header bg-primary">
             <h1>{{event.title}}</h1>
           </div>
           <div class="card-block">
             <h5 class="card-text">Author <span class="text-muted">{{event.author.fullname}}</span></h5>
             <h5 class="card-text">Location <span class="text-muted">{{event.location}}</span></h5>
-            <h5 class="card-text">Duration <span class="text-muted">{{event.duration}}</span></h5>
-            <p class="card-text">Date <small class="text-muted">{{event.startdatetime}}</small></p>
+            <h5 class="card-text">Duration <span class="text-muted">{{event.duration}} hours</span></h5>
+            <p class="card-text">Date <small class="text-muted">{{event.startdatetime | date:'short'}}</small></p>
             <a [routerLink]="['/event',event._id]" class="btn btn-xs btn-primary">
               Details
             </a>
@@ -38,15 +39,16 @@
       <small class="text-muted">Previous</small>
     </h3>
     <div class="row">
+      <p class="lead" *ngIf="passed === 0">There are no previous events</p>
       <div class="col-xs-3" *ngFor="let event of events">
-        <div class="card">
+        <div class="card" *ngIf="event.startdatetime < now  && event.visible === true">
           <div class="card-header bg-primary">
             <h1>{{event.title}}</h1>
           </div>
           <div class="card-block">
             <h5 class="card-text">Author <span class="text-muted">{{event.author.fullname}}</span></h5>
             <h5 class="card-text">Location <span class="text-muted">{{event.location}}</span></h5>
-            <h5 class="card-text">Duration <span class="text-muted">{{event.duration}}</span></h5>
+            <h5 class="card-text">Duration <span class="text-muted">{{event.duration}} hours</span></h5>
             <p class="card-text">Date <small class="text-muted">{{event.startdatetime}}</small></p>
             <a [routerLink]="['/event',event._id]" class="btn btn-xs btn-primary">
               Details

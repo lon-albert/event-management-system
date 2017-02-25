@@ -38,7 +38,7 @@ const routing = RouterModule.forRoot([
     UserModule,
     UserRoutingModule,
     AdminModule,
-    AdminRoutingModule
+    AdminRoutingModule,
   ],
   providers: [
     DataService,
