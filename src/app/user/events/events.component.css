@@ -1,0 +1,14 @@
+.table td, .table th {
+    text-align: center;
+    width: 15%;
+}
+
+.card{
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+}
+
+.table td.actions, .table th.actions {
+    text-align: center;
+    width: 10%;
+}

@@ -1,0 +1,44 @@
+.content{
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.bottom{
+  padding: 15px;
+}
+
+.bottom p{
+  padding: 5px;
+  padding-right: 6px;
+  border-radius: 3%;
+  display: inline-block;
+  margin-right: 15px;
+  color: white;
+}
+
+.comment-content{
+  padding: 2px;
+  margin-bottom: 10px;
+}
+
+.bottom small{
+  padding: 2px;
+  padding-right: 3px;
+  border-radius: 3%;
+  display: inline-block;
+  margin-right: 15px;
+  color: white;
+}
+
+.comment-data{
+  padding: 0;
+  margin: 0;
+}
+
+.comment{
+  margin-bottom: 15px;
+}
+
+.all-comments{
+  margin-bottom: 35px;
+}

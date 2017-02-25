@@ -1,0 +1,55 @@
+<div class="card" *ngIf="isLoading">
+  <h4 class="card-header">Loading...</h4>
+  <div class="card-block text-xs-center">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+  </div>
+</div>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="container" *ngIf="!isLoading">
+
+  <h3 class="display-4 text-xs-center">
+    {{event.title}}
+  </h3>
+
+  <div class="content">
+    <p>{{event.description}}</p>
+
+    <div class="bottom">
+      <p class="bg-primary" ><i class="fa fa-pencil fa-fw"></i>&nbsp; {{event?.author?.fullname}}</p>
+      <p class="bg-success"><i class="fa fa-clock-o fa-fw"></i>&nbsp; {{event.startdatetime}}</p>
+      <p class="bg-primary"><i class="fa fa-map-marker fa-fw"></i>&nbsp; {{event.location}}</p>
+      <p class="bg-success"><i class="fa fa-bell fa-fw"></i>&nbsp; {{event.duration}}</p>
+    </div>
+
+    <div class="comments">
+      <h3 class="text-xs-center">
+        Comments
+      </h3>
+
+      <div class="all-comments">
+        <div class="comment" *ngFor="let comment of comments">
+          <h4 class="comment-content">{{comment?.content}}</h4>
+          <div class="bottom comment-data">
+            <small class="bg-primary"><i class="fa fa-pencil fa-fw"></i>&nbsp; {{comment?.author?.fullname}}</small>
+            <small class="bg-success"><i class="fa fa-clock-o fa-fw"></i>&nbsp; {{comment?.date | date:'short'}}</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="new-comment">
+        <form [formGroup]="addCommentForm" (ngSubmit)="addComment()">
+          <div class="form-group">
+            <label for="content">Add a Comment</label>
+            <textarea class="form-control" formControlName="content" id="content" name="content"  placeholder="Comment on this Event" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
